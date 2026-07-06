@@ -6,7 +6,14 @@
 /*   By: vicdos-s <vicdos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 12:18:15 by vicdos-s          #+#    #+#             */
-/*   Updated: 2026/07/06 12:18:16 by vicdos-s         ###   ########.fr       */
+/*   Updated: 2026/07/06 13:33:25 by vicdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line_bonus.h"
+
+char	*get_next_line(int fd)
+{
+	static t_gnl_list	*list;
+	
+}

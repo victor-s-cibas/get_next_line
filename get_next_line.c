@@ -6,7 +6,7 @@
 /*   By: vicdos-s <vicdos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 12:16:52 by vicdos-s          #+#    #+#             */
-/*   Updated: 2026/07/05 22:54:36 by vicdos-s         ###   ########.fr       */
+/*   Updated: 2026/07/06 17:39:04 by vicdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,12 @@ char	*get_next_line(int fd)
 	static t_gnl_list	*list;
 	char				*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &list, 0) < 0)
 		return (NULL);
-	read_and_append(fd, &list);
-	if (!list)
+	read_and_append(fd, &contexts[fd]);
+	if (!contexts[fd])
 		return (NULL);
-	line = extract_line(list);
-	update_list(&list);
+	line = extract_line(contexts[fd]);
+	update_list(&contexts[fd]);
 	return (line);
 }
