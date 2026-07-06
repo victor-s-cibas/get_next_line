@@ -6,7 +6,7 @@
 /*   By: vicdos-s <vicdos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 12:19:10 by vicdos-s          #+#    #+#             */
-/*   Updated: 2026/07/02 16:49:13 by vicdos-s         ###   ########.fr       */
+/*   Updated: 2026/07/05 12:33:24 by vicdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include <stddef.h> 
+# include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_gnl_list
@@ -27,4 +27,13 @@ typedef struct s_gnl_list
 }	t_gnl_list;
 
 char	*get_next_line(int fd);
+void	read_and_append(int fd, t_gnl_list **list);
+void	add_to_list(t_gnl_list **list, char *buf);
+char	*extract_line(t_gnl_list *list);
+void	update_list(t_gnl_list **list);
+int		found_newline(t_gnl_list *list);
+void	free_list(t_gnl_list *list);
+int		count_len(t_gnl_list *list);
+void	copy_line(t_gnl_list *list, char *line);
+
 #endif
