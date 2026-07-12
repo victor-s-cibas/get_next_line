@@ -1,0 +1,8 @@
+break get_next_line
+break read_and_append
+break update_list
+break extract_line
+break alloc_remainder
+break found_newline
+break copy_line
+break add_to_list
