@@ -6,7 +6,7 @@
 /*   By: vicdos-s <vicdos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 12:17:58 by vicdos-s          #+#    #+#             */
-/*   Updated: 2026/07/11 23:25:28 by vicdos-s         ###   ########.fr       */
+/*   Updated: 2026/07/12 00:23:07 by vicdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,20 @@ int	count_len(t_gnl_list *list)
 {
 	int			len;
 	int			i;
-	t_gnl_node	*curr;
+	t_gnl_node	*current;
 
 	len = 0;
-	curr = list->head;
-	while (curr)
+	current = list->head;
+	while (current)
 	{
 		i = 0;
-		while (curr->content[i])
+		while (current->content[i])
 		{
 			len++;
-			if (curr->content[i++] == '\n')
+			if (current->content[i++] == '\n')
 				return (len);
 		}
-		curr = curr->next;
+		current = current->next;
 	}
 	return (len);
 }
@@ -73,24 +73,24 @@ void	copy_line(t_gnl_list *list, char *line)
 {
 	int			i;
 	int			j;
-	t_gnl_node	*curr;
+	t_gnl_node	*current;
 
 	j = 0;
-	curr = list->head;
-	while (curr)
+	current = list->head;
+	while (current)
 	{
 		i = 0;
-		while (curr->content[i])
+		while (current->content[i])
 		{
-			line[j++] = curr->content[i];
-			if (curr->content[i] == '\n')
+			line[j++] = current->content[i];
+			if (current->content[i] == '\n')
 			{
 				line[j] = '\0';
 				return ;
 			}
 			i++;
 		}
-		curr = curr->next;
+		current = current->next;
 	}
 	line[j] = '\0';
 }
