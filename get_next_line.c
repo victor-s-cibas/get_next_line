@@ -6,7 +6,7 @@
 /*   By: vicdos-s <vicdos-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 12:16:52 by vicdos-s          #+#    #+#             */
-/*   Updated: 2026/07/11 23:25:08 by vicdos-s         ###   ########.fr       */
+/*   Updated: 2026/07/12 17:43:19 by vicdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_gnl_node	*alloc_remainder(t_gnl_node *tail, int i)
 	if (!rem_node)
 		return (NULL);
 	rem_node->next = NULL;
-	j = 0;
+	j = 0;	
 	while (tail->content[i + j])
 		j++;
 	rem_node->content = malloc(sizeof(char) * (j + 1));
@@ -105,15 +105,15 @@ void	read_and_append(int fd, t_gnl_list *list)
 
 char	*get_next_line(int fd)
 {
-	static t_gnl_list	contexts[1024];
+	static t_gnl_list	list;
 	char				*line;
 
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
-	read_and_append(fd, &contexts[fd]);
-	if (!contexts[fd].head)
+	read_and_append(fd, &list);
+	if (!list.head)
 		return (NULL);
-	line = extract_line(&contexts[fd]);
-	update_list(&contexts[fd]);
+	line = extract_line(&list);
+	update_list(&list);
 	return (line);
 }
